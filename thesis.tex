@@ -230,7 +230,7 @@ manageable and easily scalable. Further challenges will be discussed as we delve
 specifics of our proposed solution and its design methodology. Through this discourse, we
 aim to not only highlight the challenges that we face but also to propose potential solutions.
 
-Diversity and Generality of Testing
+\textbf{Diversity and Generality of Testing}
 
 One of the primary challenges faced in the development of a binary rewriter testing
 tool is ensuring that it accurately reflects a broad spectrum of real-world scenarios.
@@ -241,7 +241,7 @@ binaries. The challenge is in ensuring the test suite's representativeness and g
 enabling it to test across different compilers, architectures, operating systems and code
 complexity.
 
-Evaluation Metrics and Benchmarks
+\textbf{Evaluation Metrics and Benchmarks}
 
 Choosing the right evaluation metrics for a binary rewriter testing tool is a significant
 challenge. GrammaTech's approach considers both functional and non-functional metrics.
@@ -287,7 +287,7 @@ representative test suite and highlight the need for carefully chosen evaluation
 aim is to address these issues and present a more robust, real-world reflective, and holistic
 evaluation approach for binary rewriters.
 
-Scalability and usability of the test suite
+\textbf{Scalability and usability of the test suite}
 
 A key challenge in the creation of a binary rewriter testing tool is the development of
 a test suite that is not only diverse and representative, but also scalable and user-friendly.
@@ -330,7 +330,7 @@ meets these stringent requirements.
 %%%%%%%%%%%%%%%%%%%%%%%%
 
 \setlength{\parindent}{4em}
-Grammatech’s testsuite
+\textbf{Grammatech’s testsuite}
 
 The initial phase of our project design involved leveraging GrammaTech's lifter
 evaluation repository as a foundation. We allocated three weeks to this endeavor, hoping to
@@ -362,7 +362,7 @@ using Grammatech’s repository, we saved time in not needing to build the tools
 rewrite binaries. The tools that were salvaged in this manner were Zipr, e9patch, and
 GrammaTech’s own rewriter ddisasm.
 
-Building our custom pipeline
+\textbf{Building our custom pipeline}
 
 With the complexities associated with this expansive project and the potential
 challenges of constructing a robust and comprehensive test suite, we had to adjust our
@@ -389,7 +389,7 @@ on the Linux file system, leveraging another strength of the UNIX-based OS. By f
 simplicity and agility in our design strategy, we aimed to build a pipeline that was, above all
 else, both efficient and adaptable to future enhancements.
 
-Tool Architecture and initiating the Testing Pipeline
+\textbf{Tool Architecture and initiating the Testing Pipeline}
 
 Our new benchmarking tool, imaginatively dubbed the Rewriter Benchmarking Tool
 (RBMT), was designed to utilize comprehensive and trusted test suites from popular
@@ -446,36 +446,36 @@ in the results section.
 This methodical approach not only ensured consistent testing across the board but
 also laid the groundwork for further testing and development.
 
-Awareness of Limitations and Areas for Future Improvement
+\textbf{Awareness of Limitations and Areas for Future Improvement}
 
 It's crucial to acknowledge that the current iteration of RBMT, while promising, is far
 from being exhaustive. Given that it was developed over a single undergraduate project
 semester, it has not yet fully addressed all the challenges we've identified. However, we've
 outlined several priority areas for future improvements:
 
-Creating Custom Docker Images (core feature): The top priority is the development
+\textbf{Creating Custom Docker Images (core feature):} The top priority is the development
 of our own Docker images and Dockerfiles. This change will simplify the project's
 onboarding process for anyone wishing to run the test suite. It will also significantly ease the
 process of modifying these images and ensure transparency. Moreover, it will guarantee
 that the Docker images are lean, containing only necessary packages, and are on a uniform
 configuration — a crucial aspect in adhering to the scientific method.
 
-Expanding the Test Suite (broadening the test suite): Currently, our test suite
+\textbf{Expanding the Test Suite (broadening the test suite):} Currently, our test suite
 includes only five subjects. Adding more subjects to the test suite, ideally approaching the
 number used in GrammaTech's suite, is a key next step.
 
-Implementing Caching Mechanisms (optimization): Given the extensive runtime of
+\textbf{Implementing Caching Mechanisms (optimization):} Given the extensive runtime of
 the test suite, incorporating caching mechanics post-building is an area for improvement.
 For instance, one could envisage bypassing the first testing phase if we have already run it
 before, as we could assume that rerunning the same subject with its identical test suite will
 yield consistent results. Storing the rewritten versions of the subjects could also be
 beneficial, mysql for example may even take up to 7h30 in order to be fully rewritten.
 
-Broadening OS and Compiler Options (broadening the test suite): The expansion
+\textbf{Broadening OS and Compiler Options (broadening the test suite):} The expansion
 to include different operating systems and compilers would also enhance the overall
 robustness and utility of the RBMT tool.
 
-Improving and varying the testing methods (improving depth of testing):
+\textbf{Improving and varying the testing methods (improving depth of testing):}
 Gathering more empirical data, such as execution time for each rewriter and size
 comparisons between original and rewritten binaries, would provide further valuable
 insights. We can also track the memory usage, CPU usage, network traffic, and system calls
