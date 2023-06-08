@@ -12,6 +12,7 @@
 % Options: MScThesis, BScThesis, MScProject, BScProject
 \usepackage[BScThesis,lablogo]{EPFLreport}
 \usepackage{xspace}
+\usepackage{textcomp}
 
 \title{A Binary Rewriter Benchmarking Tool}
 \author{Khalil M'hirsi}
@@ -356,7 +357,7 @@ more effective storage and updating of these images, given their central role in
 suite's development. The necessity for our own Dockerfiles arises from two primary
 considerations. First, ensuring the availability of the 'sudo' command within the docker
 environments. Second, segregating the workspace into three separate directories based on
-the tool name (<tool_name>-wd) ensured that running the three different tools did not
+the tool name (\textless{}tool\_name\textgreater{}-wd) ensured that running the three different tools did not
 interfere with each other due to the Linux permission system.
 With the capability to rewrite any binary file using three different rewriters
 confirmed, we turned our attention to constructing the testing pipeline. As someone new to
