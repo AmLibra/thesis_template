@@ -444,24 +444,6 @@ This process necessitated the creation of scripts for each stage of the pipeline
 
 This methodical approach not only ensured consistent testing across the board but also laid the groundwork for further testing and development.
 
-\begin{center}
-    \begin{tikzpicture}[scale=0.7, every node/.style={scale=0.7}]
-        \draw[->, thick] (-0.5,0) -- (12.5,0);
-        
-        \foreach \x in {0,2,4,6,8,10}
-            \draw (\x,-0.1) -- (\x,0.1);
-        
-        \draw (0,-0.5) node {Docker Setup};
-        \draw (2,-0.5) node {Source Retrieval};
-        \draw (4,-0.5) node {Building};
-        \draw (6,-0.5) node {Initial Test Run};
-        \draw (8,-0.5) node {Binary Rewriting};
-        \draw (10,-0.5) node {Secondary Test Run};
-        \draw (12,-0.5) node {Results Collection};
-    \end{tikzpicture}
-    \end{center}
-
-
 \textbf{Awareness of Limitations and Areas for Future Improvement}
 
 It's crucial to acknowledge that the current iteration of RBMT, while promising, is far
