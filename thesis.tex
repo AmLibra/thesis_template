@@ -28,7 +28,7 @@
 
 \begin{abstract}
     \setlength{\parindent}{4em}
-    
+
     Binary rewriters, critical tools for software analysis, transformation, and security,
     necessitate comprehensive and efficient evaluation methodologies to ensure their
     effectiveness and reliability. This task becomes a challenge due to the complexity and
@@ -57,17 +57,21 @@
 \chapter{Introduction}
 %%%%%%%%%%%%%%%%%%%%%%
 
+\setlength{\parindent}{4em}
+
 Binary rewriting is a field in software engineering that deals with the alteration of
 binary code, which is the primary, executable format of software. Unlike source code, which
 is written in high-level languages and is intended for human understanding, binary code
 consists of machine code, the lowest level of programming, which is natively executable by
 the computer's processor.
+
 Binary rewriters, as the name suggests, are tools that manipulate binary code. They
 parse the binary executable, understand its structure and semantics, and then modify it,
 generating a new binary that retains the functionality of the original program while
 incorporating new characteristics or enhancements. The binary rewriting technique is
 leveraged in many computer science domains due to its ability to modify programs without
 needing access to their source code.
+
 One primary usage of binary rewriters is in the field of software security. They are
 used for injecting mitigations in compiled programs, such as control-flow integrity or
 memory sanitization. By rewriting the binary, it's possible to add these security features
@@ -80,24 +84,29 @@ platform-specific instructions or system calls. Additionally, they are extensive
 field of reverse engineering for program analysis and understanding. Binary rewriters can
 add instrumentation to the binary code that logs useful runtime information, helping to
 understand the program's behavior.
+
 Despite their wide-ranging applications, binary rewriting is a challenging process due
 to the complexity of interpreting machine code accurately, handling indirect jumps and
 calls, dealing with dynamic linking and loading, among other hurdles.
+
 While binary rewriters have significant potential in various applications, their
 effectiveness and reliability are often unverified or assumed based on limited case studies.
 Given the complex nature of binary rewriting and the multitude of challenges it involves, the
 need for a comprehensive, efficient, and convenient tool to test binary rewriters cannot be
 overstated.
+
 A core issue is that currently, there isn't a standardized methodology for evaluating
 the performance of binary rewriters across different use cases and conditions. While several
 tools already exist for binary rewriting as mentioned above, their evaluation often happens
 in isolation, utilizing different benchmarks and criteria that may not reflect the broad range
 of scenarios encountered in real-world applications.
+
 In light of this, the existing testing methodologies tend to focus on the depth of
 testing on a small sample size rather than a breadth-first approach. As a result, they might
 not fully capture the variety and diversity of real-world use cases. In other words, there is a
 lack of extensive testing on a wide array of programs that reflect the range of applications
 that might be encountered in a practical setting.
+
 The highlighted issues accentuate the demand for a tool that integrates a uniform
 benchmarking system for assessing binary rewriters, while simultaneously guaranteeing a
 testing process that is comprehensive, scalable, and mirrors real-world scenarios. An
@@ -109,6 +118,7 @@ the test suite, and the broadness of their coverage could be further explored an
 to establish a balance between the range of test subjects and depth of the evaluation.
 Therefore, their work should be seen as a valuable foundation upon which further
 advancements in the field can be built.
+
 The subsequent sections will introduce RBMT, our new tool designed to test binary
 rewriters effectively and efficiently, contributing to their development and refining process.
 By providing a convenient and systematic approach to test these vital tools, we aim to
