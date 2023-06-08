@@ -1,5 +1,5 @@
 
-name=thesis
+name=khalil_thesis
 
 all: *.tex *.bib 
 	rubber --pdf $(name).tex
