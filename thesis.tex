@@ -337,7 +337,7 @@ evaluation repository as a foundation. We allocated three weeks to this endeavor
 benefit from the existing infrastructure as stated in GrammaTech's declaration:
 
 "All artifacts generated in this work, including our evaluation infrastructure, corpus
-of test binaries, predictive models, and the evaluated tools, are publicly available at:
+of test binaries, predictive models, and the evaluated tools, are publicly available at:\\
 https://gitlab.com/GrammaTech/lifter-eval (GrammaTech, n.d.)."
 
 Our strategy was to meticulously adhere to the available documentation for
@@ -423,28 +423,26 @@ usage, the initial focus was on automating coreutils testing.
 
 This process necessitated the creation of scripts for each stage of the pipeline:
 
-Docker Environment Preparation: This involved setting up the Docker environment,
-including different package dependencies and updates.
+\begin{enumerate}
+    \item \textbf{Docker Environment Preparation:} This involved setting up the Docker environment, including different package dependencies and updates.
+    
+    \item \textbf{Source Retrieval and Building:} This step required pulling from the appropriate repo or locating the suitable source tar archive and 
+    building according to official documentation. This stage often proved more challenging than anticipated due to insufficient documentation and 
+    certain software (e.g., MySQL and LibreOffice) strongly insisting that users do not build binaries from source for security reasons.
+    
+    \item \textbf{Initial Test Suite Run:} The first run of the test suite provides a benchmark. Here, a 100\% pass rate is the anticipated outcome, 
+    although it is not guaranteed.
+    
+    \item \textbf{Binary Rewriting:} At this stage, all relevant binaries that were previously built undergo rewriting using the designated tool.
+    
+    \item \textbf{Secondary Test Suite Run:} Running the test suite a second time allows for comparison of the pass rate against the initial build.
+    
+    \item \textbf{Results Collection:} Python was chosen for this work, primarily for its ease in handling text manipulation and processing. 
+    This stage generated the comprehensive tables presented in the results section.
+\end{enumerate}
 
-Source Retrieval and Building: This step required pulling from the appropriate repo
-or locating the suitable source tar archive and building according to official documentation.
-This stage often proved more challenging than anticipated due to insufficient
-documentation and certain software (e.g., MySQL and LibreOffice) strongly insisting that
-users do not build binaries from source for security reasons.
+This methodical approach not only ensured consistent testing across the board but also laid the groundwork for further testing and development.
 
-Initial Test Suite Run: The first run of the test suite provides a benchmark. Here, a
-100\% pass rate is the anticipated outcome, although it is not guaranteed.
-Binary Rewriting: At this stage, all relevant binaries that were previously built
-undergo rewriting using the designated tool.
-
-Secondary Test Suite Run: Running the test suite a second time allows for
-comparison of the pass rate against the initial build.
-
-Results Collection: Python was chosen for this work, primarily for its ease in handling
-text manipulation and processing. This stage generated the comprehensive tables presented
-in the results section.
-This methodical approach not only ensured consistent testing across the board but
-also laid the groundwork for further testing and development.
 
 \textbf{Awareness of Limitations and Areas for Future Improvement}
 
