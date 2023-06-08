@@ -14,6 +14,7 @@
 \usepackage{xspace}
 \usepackage{textcomp}
 \usepackage{indentfirst}
+\usepackage{float}
 
 \title{A Binary Rewriter Benchmarking Tool}
 \author{Khalil M'hirsi}
@@ -58,8 +59,7 @@
 %%%%%%%%%%%%%%%%%%%%%%
 
 \setlength{\parindent}{4em}
-
-\indent Binary rewriting is a field in software engineering that deals with the alteration of
+Binary rewriting is a field in software engineering that deals with the alteration of
 binary code, which is the primary, executable format of software. Unlike source code, which
 is written in high-level languages and is intended for human understanding, binary code
 consists of machine code, the lowest level of programming, which is natively executable by
@@ -129,8 +129,7 @@ software landscape.
 \chapter{Background}
 %%%%%%%%%%%%%%%%%%%%
 \setlength{\parindent}{4em}
-
-\indent{}Binary rewriting is a technique that allows modifications to be made directly to
+Binary rewriting is a technique that allows modifications to be made directly to
 compiled binary executables. The process involves analyzing and potentially altering a
 binary without having access to its source code. This is a powerful approach that can be
 used in several applications such as software testing, debugging, optimization, obfuscation,
@@ -212,8 +211,7 @@ limitations and bridge the gap in binary rewriter testing.
 %%%%%%%%%%%%%%%%
 
 \setlength{\parindent}{4em}
-
-\indent{}Embarking on the journey of developing a binary rewriter testing tool, we inevitably
+Embarking on the journey of developing a binary rewriter testing tool, we inevitably
 face a unique set of challenges. Our work parallels GrammaTech's "Binary Lifter Evaluation"
 in many ways, allowing for valuable comparisons and insights. Analyzing the challenges
 encountered by GrammaTech's ambitious project can inform and guide our own
@@ -332,8 +330,7 @@ meets these stringent requirements.
 %%%%%%%%%%%%%%%%%%%%%%%%
 
 \setlength{\parindent}{4em}
-
-\indent{}Grammatech’s testsuite
+Grammatech’s testsuite
 
 The initial phase of our project design involved leveraging GrammaTech's lifter
 evaluation repository as a foundation. We allocated three weeks to this endeavor, hoping to
@@ -490,11 +487,76 @@ it closer to a comprehensive solution for binary rewriter testing and eval
 \chapter{Results}
 %%%%%%%%%%%%%%%%%%%%
 
-In the evaluation you convince the reader that your design works as intended.
-Describe the evaluation setup, the designed experiments, and how the
-experiments showcase the individual points you want to prove.
-
-This section is usually 5-10 pages.
+\begin{table}[h]
+    \centering
+    \caption{Success rate of Binary Rewrites with Zipr}
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+    Subject & Total & Passed & Success rate \\ \hline
+    coreutils & 641 & 641 & 100.00\% \\ \hline
+    coreutils (no rewrite) & 641 & 641 & 100.00\% \\ \hline
+    libreoffice & 1 & 0 & 0.00\% \\ \hline
+    libreoffice (no rewrite) & 1 & 1 & 100.00\% \\ \hline
+    mysql & 292 & 292 & 100.00\% \\ \hline
+    mysql (no rewrite) & 292 & 292 & 100.00\% \\ \hline
+    redis & 90 & 89 & 98.89\% \\ \hline
+    redis (no rewrite) & 90 & 89 & 98.89\% \\ \hline
+    sqlite & 46386 & 46386 & 100.00\% \\ \hline
+    sqlite (no rewrite) & 302151 & 302151 & 100.00\% \\ \hline
+    \end{tabular}
+    \end{table}
+    
+    \begin{table}[h]
+    \centering
+    \caption{Success rate of Binary Rewrites with e9patch}
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+    Subject & Total & Passed & Success rate \\ \hline
+    coreutils & 641 & 640 & 99.84\% \\ \hline
+    coreutils (no rewrite) & 641 & 640 & 99.84\% \\ \hline
+    libreoffice & 1 & 1 & 100.00\% \\ \hline
+    libreoffice (no rewrite) & 1 & 1 & 100.00\% \\ \hline
+    mysql & 292 & 292 & 100.00\% \\ \hline
+    mysql (no rewrite) & 292 & 292 & 100.00\% \\ \hline
+    redis & 90 & 90 & 100.00\% \\ \hline
+    redis (no rewrite) & 90 & 90 & 100.00\% \\ \hline
+    sqlite & 302151 & 302151 & 100.00\% \\ \hline
+    sqlite (no rewrite) & 302151 & 302151 & 100.00\% \\ \hline
+    \end{tabular}
+    \end{table}
+    
+    \begin{table}[h]
+    \centering
+    \caption{Success rate of Binary Rewrites with ddisasm}
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+    Subject & Total & Passed & Success rate \\ \hline
+    coreutils & 641 & 640 & 99.84\% \\ \hline
+    coreutils (no rewrite) & 641 & 641 & 100.00\% \\ \hline
+    libreoffice & 1 & 0 & 0.00\% \\ \hline
+    libreoffice (no rewrite) & 1 & 1 & 100.00\% \\ \hline
+    mysql & N/A & N/A & N/A \\ \hline
+    mysql (no rewrite) & 292 & 292 & 100.00\% \\ \hline
+    redis & 90 & 89 & 98.89\% \\ \hline
+    redis (no rewrite) & 90 & 90 & 100.00\% \\ \hline
+    sqlite & 302151 & 302151 & 100.00\% \\ \hline
+    sqlite (no rewrite) & 302151 & 302151 & 100.00\% \\ \hline
+    \end{tabular}
+    \end{table}
+    
+    \begin{table}[h]
+    \centering
+    \caption{Direct comparison of success rates of Binary Rewrites with all 3 studied rewriters}
+    \begin{tabular}{|l|l|l|l|}
+    \hline
+    subject & zipr & e9patch & ddisasm \\ \hline
+    coreutils & 100.00\% & 99.84\% & 99.84\% \\ \hline
+    libreoffice & 0.00\% & 100.00\% & 0.00\% \\ \hline
+    mysql & 100.00\% & 100.00\% & N/A \\ \hline
+    redis & 98.89\% & 100.00\% & 98.89\% \\ \hline
+    sqlite & 100.00\% & 100.00\% & 100.00\% \\ \hline
+    \end{tabular}
+    \end{table}
 
 
 %%%%%%%%%%%%%%%%%%%%%%
