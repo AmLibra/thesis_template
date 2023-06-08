@@ -29,7 +29,7 @@
 \begin{abstract}
     \setlength{\parindent}{4em}
 
-    Binary rewriters, critical tools for software analysis, transformation, and security,
+    \indent{}Binary rewriters, critical tools for software analysis, transformation, and security,
     necessitate comprehensive and efficient evaluation methodologies to ensure their
     effectiveness and reliability. This task becomes a challenge due to the complexity and
     diversity of real-world applications, the subtle changes a rewriter can introduce, and the
@@ -59,7 +59,7 @@
 
 \setlength{\parindent}{4em}
 
-Binary rewriting is a field in software engineering that deals with the alteration of
+\indent{}Binary rewriting is a field in software engineering that deals with the alteration of
 binary code, which is the primary, executable format of software. Unlike source code, which
 is written in high-level languages and is intended for human understanding, binary code
 consists of machine code, the lowest level of programming, which is natively executable by
@@ -128,14 +128,16 @@ software landscape.
 %%%%%%%%%%%%%%%%%%%%
 \chapter{Background}
 %%%%%%%%%%%%%%%%%%%%
+\setlength{\parindent}{4em}
 
-Binary rewriting is a technique that allows modifications to be made directly to
+\indent{}Binary rewriting is a technique that allows modifications to be made directly to
 compiled binary executables. The process involves analyzing and potentially altering a
 binary without having access to its source code. This is a powerful approach that can be
 used in several applications such as software testing, debugging, optimization, obfuscation,
 and reverse engineering. It also plays a significant role in the domain of software security,
 where it can be used for purposes like malware analysis and defense, software hardening,
 and vulnerability patching.
+
 Rewriting techniques can broadly be classified into two categories: static and
 dynamic. Static rewriting is performed offline, i.e., the binary is modified before it is loaded
 for execution. This type of rewriting involves transforming the entire binary, creating a new
@@ -144,6 +146,7 @@ dynamic binary rewriting is performed on-the-fly during the execution of a binar
 of rewriting gives the flexibility to change the behavior of the program at runtime, which can
 be highly valuable in cases such as profiling, instrumentation, and real-time security
 defense.
+
 Despite its potential, binary rewriting presents a number of challenges. Firstly, due
 to the high complexity of binary code and the absence of high-level semantic information,
 analyzing and accurately rewriting binaries is a complex task. The challenge becomes more
@@ -153,10 +156,12 @@ the semantic equivalence between the original and rewritten binary is non-trivia
 particularly when aggressive optimizations are applied. Thirdly, the rewriting process itself
 should be efficient in terms of both time and space to avoid introducing significant
 overhead.
+
 Over the years, numerous binary rewriting tools have emerged, each characterized
 by distinct strengths and weaknesses. Tools such as Zipr, DDisasm, and Retrowrite
 concentrate on delivering robust static rewriting capabilities. In contrast, others, such as
 QEMu, enable dynamic binary instrumentation functionalities.
+
 The efficacy of these tools can be constrained by various factors. These encompass
 the intricacy of the binary code, the unique architectural attributes of the target system,
 and the level of resilience necessitated by the application in question. For instance, static
@@ -166,6 +171,7 @@ ensuring precise semantic equivalence between original and rewritten binaries co
 challenges. On the other hand, QEMu's dynamic binary instrumentation comes to the fore in
 scenarios that require real-time modifications during program execution, though it may be
 constrained by runtime performance overheads.
+
 Despite substantial advancements in the field of binary rewriting, the need for more
 sophisticated tools and techniques remains to enable more accurate and efficient binary
 rewriting processes. The reason being, binary rewriting caters to a wide array of applications
@@ -173,6 +179,7 @@ from malware analysis to software hardening and from performance optimization to
 time defense mechanisms. Therefore, any innovation in this domain can trigger
 transformative impacts across the broader software industry, leading to improved software
 reliability, security, and efficiency.
+
 One significant contribution in the binary rewriting domain was made by
 GrammaTech. Founded in 1988 as a technology spin-off from Cornell University,
 GrammaTech is a well-established software-development tools vendor based in Bethesda,
@@ -181,6 +188,7 @@ security testing products and software research services, making substantial str
 software engineering domain. Among their numerous endeavors, their work on "Binary
 Lifter Evaluation" stands out. This paper aimed to test the generality, reliability, and
 performance of binary rewriters and the binaries they produce.
+
 In their study, GrammaTech utilized 10 different static rewriters such as Zipr,
 ddisasm, e9patch, and Retrowrite, to recompile 3344 binaries sourced from 34 benchmark
 programs and three production compilers. They adopted a breadth-first approach, focusing
@@ -190,6 +198,7 @@ methodology. Their quest to cover a vast range of test subjects may have inadver
 compromised the depth of their evaluation. Thus, the study's effectiveness, comprehensive
 nature, usability, and real-world applicability of their testing criteria and test suite could be
 further enhanced.
+
 This gap in the binary rewriter testing domain triggered the motivation behind our
 project: developing a robust benchmarking tool for binary rewriters, capable of delivering a
 thorough, real-world-reflective, and scalable testing process. By offering a more balanced,
@@ -202,23 +211,29 @@ limitations and bridge the gap in binary rewriter testing.
 \chapter{Challenges}
 %%%%%%%%%%%%%%%%
 
-Embarking on the journey of developing a binary rewriter testing tool, we inevitably
+\setlength{\parindent}{4em}
+
+\indent{}Embarking on the journey of developing a binary rewriter testing tool, we inevitably
 face a unique set of challenges. Our work parallels GrammaTech's "Binary Lifter Evaluation"
 in many ways, allowing for valuable comparisons and insights. Analyzing the challenges
 encountered by GrammaTech's ambitious project can inform and guide our own
 development process.
+
 The primary goal, as per our understanding of GrammaTech's work, is to test the
 generality, reliability, and performance of binary rewriters and the binaries they produce.
 The challenge lies not only in achieving these objectives but in doing so in a way that reflects
 a diverse set of real-world scenarios. The binary rewriter testing tool must be able to handle
 a vast range of binaries and test across different compilers, architectures, and code
 complexities.
+
 The task of creating such a comprehensive and representative test suite is a daunting
 one. The test suite must not only be vast and diverse but also needs to be effectively
 manageable and easily scalable. Further challenges will be discussed as we delve into the
 specifics of our proposed solution and its design methodology. Through this discourse, we
 aim to not only highlight the challenges that we face but also to propose potential solutions.
+
 Diversity and Generality of Testing
+
 One of the primary challenges faced in the development of a binary rewriter testing
 tool is ensuring that it accurately reflects a broad spectrum of real-world scenarios.
 GrammaTech's methodology focused on breadth rather than depth, implying an attempt to
@@ -227,13 +242,16 @@ rewriter testing tool must have a comprehensive suite of tests to handle a diver
 binaries. The challenge is in ensuring the test suite's representativeness and generality,
 enabling it to test across different compilers, architectures, operating systems and code
 complexity.
+
 Evaluation Metrics and Benchmarks
+
 Choosing the right evaluation metrics for a binary rewriter testing tool is a significant
 challenge. GrammaTech's approach considers both functional and non-functional metrics.
 While these metrics offer crucial information about the functionality and performance of
 the rewritten binaries, there is an ongoing discussion about whether these metrics
 holistically measure the generality and reliability of the rewriters and the binaries they
 produce.
+
 The functional metrics employed in GrammaTech's study, namely the Null Function
 Test and the AFL Function Test, provide an initial understanding of the rewriter's ability to
 produce functional binaries. However, these tests may not fully capture the richness and
@@ -242,54 +260,66 @@ functional binaries under a controlled set of conditions, but the real-world use
 pose far more varied and complex challenges. Factors such as how the rewritten binary
 interacts with different operating systems, handles varying loads, or reacts to a spectrum of
 input data, are not fully assessed in these tests.
+
 The study also incorporated non-functional metrics to gauge the performance and
 efficiency of the rewriters, including their runtime, memory usage, and changes in file size.
 Although these metrics are important for evaluating performance, they may not be directly
 indicative of the rewriters' reliability and generality. A rewriter may exhibit high efficiency
 but might struggle with maintaining the exact functionality of complex binaries.
+
 A notable part of the evaluation process is the set of tasks and checkpoints defined
 by GrammaTech. They include NOP (successful rewrite with no modifications), AFL
 (successful rewrite with modifications that support AFL++ instrumentation), and various
 checkpoints like IR (Intermediate result is collectable), EXE (successful generation of new
 executable), and AFL EXE (successful generation of AFL Instrumented exec).
+
 These tasks and checkpoints provide a structured framework to evaluate the binary
 rewriters. However, they raise questions about their comprehensiveness and
 representativeness. Is the successful generation of an AFL Instrumented executable a strong
 enough indicator of the rewriter's effectiveness in real-world scenarios? Are the tasks and
 checkpoints sufficient and comprehensive to assess the wide range of capabilities that real-
 world applications demand from binary rewriters?
+
 Furthermore, the study's test suite included 34 different applications and use cases.
 Although this provided 3344 binaries for testing, it is worth questioning if this sample size
 and selection is adequately representative of real-world applications.
+
 These considerations underscore the challenge of developing a comprehensive and
 representative test suite and highlight the need for carefully chosen evaluation metrics. Our
 aim is to address these issues and present a more robust, real-world reflective, and holistic
 evaluation approach for binary rewriters.
+
 Scalability and usability of the test suite
+
 A key challenge in the creation of a binary rewriter testing tool is the development of
 a test suite that is not only diverse and representative, but also scalable and user-friendly.
 For the testing tool to be practical and widely usable, the test suite must be designed to
 operate smoothly on a wide range of computer systems.
+
 The usability of the test suite is paramount. The test suite must be clear and
 intuitive, allowing users, regardless of their level of technical expertise, to run and interpret
 the tests. It should also be designed with future updates and expansions in mind. This
 ensures the testing tool remains relevant and adaptable to evolving needs and
 advancements in binary rewriting techniques.
+
 Accessibility is another vital consideration. Unlike GrammaTech's private repositories
 in their "lifter-eval" project, the test suite and its associated resources should be openly
 accessible to users. This transparency not only enhances usability but also encourages
 collaboration and contribution from the wider community, thereby strengthening the
 robustness and comprehensiveness of the tests.
+
 Modularity is a key design principle that enhances the versatility of the test suite. A
 modular design allows users to execute a subset of tests as needed, providing the flexibility
 to focus on specific areas of interest or concern. This is particularly beneficial during
 debugging processes, where isolating specific functionalities can greatly expedite problem
 identification and resolution.
+
 Furthermore, the test suite should be designed to leverage caching capabilities
 where possible. Effective use of caching can dramatically speed up repeated tests by storing
 and reusing previously computed results. This is especially valuable in a testing
 environment, where iterations are frequent and any reduction in computation time can
 significantly streamline the testing process.
+
 In essence, designing a test suite that embodies these principles is challenging, yet it
 forms a cornerstone of creating a powerful, usable, and resilient binary rewriter testing tool.
 The test suite must be representative and comprehensive, but it must also be user-friendly,
@@ -301,42 +331,54 @@ meets these stringent requirements.
 \chapter{Design}
 %%%%%%%%%%%%%%%%%%%%%%%%
 
-Grammatech’s testsuite
+\setlength{\parindent}{4em}
+
+\indent{}Grammatech’s testsuite
+
 The initial phase of our project design involved leveraging GrammaTech's lifter
 evaluation repository as a foundation. We allocated three weeks to this endeavor, hoping to
 benefit from the existing infrastructure as stated in GrammaTech's declaration:
+
 "All artifacts generated in this work, including our evaluation infrastructure, corpus
 of test binaries, predictive models, and the evaluated tools, are publicly available at:
 https://gitlab.com/GrammaTech/lifter-eval (GrammaTech, n.d.)."
+
 Our strategy was to meticulously adhere to the available documentation for
 constructing each docker image using the provided Dockerfiles. Unfortunately, this
 endeavor proved less fruitful than expected.
+
 The primary issues arose from private repositories for tools and subjects, which
 rendered them inaccessible. Additionally, the Dockerfiles were outdated, resulting in
 crashes during attempts to download specific binaries and files. The absence of
 comprehensive documentation only added to these problems.
+
 Even after successfully building docker images, they lacked crucial packages
 necessary to run their tool command. This suggested a significant portion of the work was
 outdated. However, it is noteworthy that throughout the semester, GrammaTech has been
 actively improving their repository, implementing new features and adding more binaries to
 the test suite, including new languages like Fortran and Ocaml.
+
 This initial setback underscored the importance of adaptability in our design
 strategy, leading us to pivot towards developing our own infrastructure for the project. We
 will nevertheless mention that having been able to build a few important docker images
 using Grammatech’s repository, we saved time in not needing to build the tools required to
 rewrite binaries. The tools that were salvaged in this manner were Zipr, e9patch, and
 GrammaTech’s own rewriter ddisasm.
+
 Building our custom pipeline
+
 With the complexities associated with this expansive project and the potential
 challenges of constructing a robust and comprehensive test suite, we had to adjust our
 strategy when constructing our own pipeline. Given that I was the sole architect of this
 project, it was critical to ensure the feasibility of each development stage.
+
 Our approach mirrored the principles of Rapid or Agile development, whereby we
 established tangible, weekly goals to ensure continuous progression. The primary objective
 was to accelerate the delivery of a Minimum Viable Product (MVP) and subsequently
 enhance its functionality by incorporating as many desired features as possible over time.
 This strategic planning not only ensured the project's success rate but also addressed the
 earlier-mentioned challenges of scalability and modularity.
+
 In terms of the operating system, we decided to restrict the test suite to Linux for
 the initial development phase. This decision was driven by the ease of scripting on Linux and
 the convenience of automating and instrumenting installations of the test subjects from
@@ -344,25 +386,31 @@ source. While our code and scripts needed to maintain simplicity, even if it occ
 required 'hacky' solutions, this was necessary to ensure the pipeline's internals remained
 understandable and easily modifiable. This is a major difference from Grammatech’s over-
 engineered tool pipeline.
+
 Communication within our pipeline was primarily facilitated through file exchanges
 on the Linux file system, leveraging another strength of the UNIX-based OS. By focusing on
 simplicity and agility in our design strategy, we aimed to build a pipeline that was, above all
 else, both efficient and adaptable to future enhancements.
+
 Tool Architecture and initiating the Testing Pipeline
+
 Our new benchmarking tool, imaginatively dubbed the Rewriter Benchmarking Tool
 (RBMT), was designed to utilize comprehensive and trusted test suites from popular
 software. The RBMT was conceived with the primary objective of comparing the
 performance of binaries, pre- and post-rewrite, using various binary rewriters derived from
 GrammaTech's work.
+
 The initial development phase entailed the creation of scripts to facilitate the
 efficient management of docker containers. These scripts enabled one-command
 installation, saving, and updating of the docker images, including dependency installations,
 which we will discuss shortly.
+
 One constant challenge that persisted throughout the project was the need to rely
 on these 'black box' docker images. These were established early in the project when we
 were still familiarizing ourselves with the nuances of developing in a remote Linux server
 environment and learning to use tools like Docker. The docker images' sole purpose was to
 facilitate the running of rewriting tools.
+
 In retrospect, it would have been more efficient to create our Dockerfiles to enable
 more effective storage and updating of these images, given their central role in the test
 suite's development. The necessity for our own Dockerfiles arises from two primary
@@ -370,52 +418,66 @@ considerations. First, ensuring the availability of the 'sudo' command within th
 environments. Second, segregating the workspace into three separate directories based on
 the tool name (\textless{}tool\_name\textgreater{}-wd) ensured that running the three different tools did not
 interfere with each other due to the Linux permission system.
+
 With the capability to rewrite any binary file using three different rewriters
 confirmed, we turned our attention to constructing the testing pipeline. As someone new to
 installing software from source and becoming accustomed to daily UNIX-like environment
 usage, the initial focus was on automating coreutils testing.
+
 This process necessitated the creation of scripts for each stage of the pipeline:
+
 Docker Environment Preparation: This involved setting up the Docker environment,
 including different package dependencies and updates.
+
 Source Retrieval and Building: This step required pulling from the appropriate repo
 or locating the suitable source tar archive and building according to official documentation.
 This stage often proved more challenging than anticipated due to insufficient
 documentation and certain software (e.g., MySQL and LibreOffice) strongly insisting that
 users do not build binaries from source for security reasons.
+
 Initial Test Suite Run: The first run of the test suite provides a benchmark. Here, a
 100\% pass rate is the anticipated outcome, although it is not guaranteed.
 Binary Rewriting: At this stage, all relevant binaries that were previously built
 undergo rewriting using the designated tool.
+
 Secondary Test Suite Run: Running the test suite a second time allows for
 comparison of the pass rate against the initial build.
+
 Results Collection: Python was chosen for this work, primarily for its ease in handling
 text manipulation and processing. This stage generated the comprehensive tables presented
 in the results section.
 This methodical approach not only ensured consistent testing across the board but
 also laid the groundwork for further testing and development.
+
 Awareness of Limitations and Areas for Future Improvement
+
 It's crucial to acknowledge that the current iteration of RBMT, while promising, is far
 from being exhaustive. Given that it was developed over a single undergraduate project
 semester, it has not yet fully addressed all the challenges we've identified. However, we've
 outlined several priority areas for future improvements:
+
 Creating Custom Docker Images (core feature): The top priority is the development
 of our own Docker images and Dockerfiles. This change will simplify the project's
 onboarding process for anyone wishing to run the test suite. It will also significantly ease the
 process of modifying these images and ensure transparency. Moreover, it will guarantee
 that the Docker images are lean, containing only necessary packages, and are on a uniform
 configuration — a crucial aspect in adhering to the scientific method.
+
 Expanding the Test Suite (broadening the test suite): Currently, our test suite
 includes only five subjects. Adding more subjects to the test suite, ideally approaching the
 number used in GrammaTech's suite, is a key next step.
+
 Implementing Caching Mechanisms (optimization): Given the extensive runtime of
 the test suite, incorporating caching mechanics post-building is an area for improvement.
 For instance, one could envisage bypassing the first testing phase if we have already run it
 before, as we could assume that rerunning the same subject with its identical test suite will
 yield consistent results. Storing the rewritten versions of the subjects could also be
 beneficial, mysql for example may even take up to 7h30 in order to be fully rewritten.
+
 Broadening OS and Compiler Options (broadening the test suite): The expansion
 to include different operating systems and compilers would also enhance the overall
 robustness and utility of the RBMT tool.
+
 Improving and varying the testing methods (improving depth of testing):
 Gathering more empirical data, such as execution time for each rewriter and size
 comparisons between original and rewritten binaries, would provide further valuable
