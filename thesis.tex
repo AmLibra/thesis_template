@@ -110,7 +110,7 @@ benchmarking system for assessing binary rewriters, while simultaneously guarant
 testing process that is comprehensive, scalable, and mirrors real-world scenarios. An
 example of a study pivoting towards such a breadth-first approach (incorporating a large
 number of subjects with fewer, but targeted, tests) is GrammaTech’s “Binary Lifter
-Evaluation.” While this study marks a significant step forward, it also opens up discussions
+Evaluation”~\cite{grammatechpaper}. While this study marks a significant step forward, it also opens up discussions
 around further improvements. The effectiveness of their testing criteria, the practicality of
 the test suite, and the broadness of their coverage could be further explored and optimized
 to establish a balance between the range of test subjects and depth of the evaluation.
@@ -155,9 +155,10 @@ should be efficient in terms of both time and space to avoid introducing signifi
 overhead.
 
 Over the years, numerous binary rewriting tools have emerged, each characterized
-by distinct strengths and weaknesses. Tools such as Zipr~\cite{ziprpaper}, DDisasm, and Retrowrite
+by distinct strengths and weaknesses. Tools such as Zipr~\cite{ziprpaper}, DDisasm~\cite{ddisasmpaper}, 
+and Retrowrite~\cite{retrowritepaper, retrowritepaper2}
 concentrate on delivering robust static rewriting capabilities. In contrast, others, such as
-QEMu, enable dynamic binary instrumentation functionalities.
+QEMu~\cite{qemupaper}, enable dynamic binary instrumentation functionalities.
 
 The efficacy of these tools can be constrained by various factors. These encompass
 the intricacy of the binary code, the unique architectural attributes of the target system,
@@ -187,7 +188,7 @@ Lifter Evaluation" stands out. This paper aimed to test the generality, reliabil
 performance of binary rewriters and the binaries they produce.
 
 In their study, GrammaTech utilized 10 different static rewriters such as Zipr,
-ddisasm, e9patch, and Retrowrite, to recompile 3344 binaries sourced from 34 benchmark
+ddisasm, e9patch~\cite{e9patchpaper}, and Retrowrite, to recompile 3344 binaries sourced from 34 benchmark
 programs and three production compilers. They adopted a breadth-first approach, focusing
 on incorporating a large number of subjects with fewer, yet significant tests. While this
 research marked a significant step in the field, it revealed some inherent challenges in their
@@ -265,7 +266,7 @@ but might struggle with maintaining the exact functionality of complex binaries.
 
 A notable part of the evaluation process is the set of tasks and checkpoints defined
 by GrammaTech. They include NOP (successful rewrite with no modifications), AFL
-(successful rewrite with modifications that support AFL++ instrumentation), and various
+(successful rewrite with modifications that support AFL++ instrumentationL~\cite{aflpaper}), and various
 checkpoints like IR (Intermediate result is collectable), EXE (successful generation of new
 executable), and AFL EXE (successful generation of AFL Instrumented exec).
 
