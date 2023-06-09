@@ -16,6 +16,7 @@
 \usepackage{indentfirst}
 \usepackage{float}
 \usepackage{tikz}
+\usepackage{placeins}
 
 \title{A Binary Rewriter Benchmarking Tool}
 \author{Khalil M'hirsi}
@@ -570,7 +571,7 @@ rewrites was calculated based on the number of total tests run and the number of
     sqlite & 100.00\% & 100.00\% & 100.00\% \\ \hline
     \end{tabular}
     \end{table}
-
+    \FloatBarrier
     From these results, it is evident that each binary rewriter performed well in certain areas, 
     but also faced limitations. For example, Zipr and e9patch were successful in rewriting the coreutils, 
     mysql, and sqlite subjects, whereas ddisasm did not support the mysql subject. Interestingly, e9patch
