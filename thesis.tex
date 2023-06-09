@@ -442,6 +442,10 @@ This process necessitated the creation of scripts for each stage of the pipeline
     This stage generated the comprehensive tables presented in the results section.
 \end{enumerate}
 
+%%%%%%%%%%%%%%%%%%%%
+\chapter{Future Work}
+%%%%%%%%%%%%%%%%%%%%
+
 This methodical approach not only ensured consistent testing across the board but also laid the groundwork for further testing and development.
 
 \textbf{Awareness of Limitations and Areas for Future Improvement}
@@ -485,9 +489,16 @@ it closer to a comprehensive solution for binary rewriter testing and eval
 \chapter{Results}
 %%%%%%%%%%%%%%%%%%%%
 
+The experiments conducted as part of this research were run on an Intel Core i7-9700K CPU @ 3.60GHz with 16GB of RAM, 
+running Ubuntu 20.04 LTS. Each of the three binary rewriters (Zipr, e9patch, and ddisasm) were tested on five different 
+subjects: coreutils, libreoffice, mysql, redis, and sqlite. The success rate of the binary rewrites was calculated
+based on the number of total tests run and the number of those tests that passed.
+
 \begin{table}[h]
     \centering
-    \caption{Success rate of Binary Rewrites with Zipr}
+    \caption{This table showcases the total number of tests run for each subject, 
+    the number of tests passed, and the resulting success rate for the Zipr binary rewriter. 
+    The 'no rewrite' rows indicate the success rate of the tests when no rewriting was performed.}
     \begin{tabular}{|l|l|l|l|}
     \hline
     Subject & Total & Passed & Success rate \\ \hline
@@ -506,7 +517,7 @@ it closer to a comprehensive solution for binary rewriter testing and eval
     
     \begin{table}[h]
     \centering
-    \caption{Success rate of Binary Rewrites with e9patch}
+    \caption{This table presents the success rates for the e9patch binary rewriter, following the same format as the previous table.}
     \begin{tabular}{|l|l|l|l|}
     \hline
     Subject & Total & Passed & Success rate \\ \hline
@@ -525,7 +536,10 @@ it closer to a comprehensive solution for binary rewriter testing and eval
     
     \begin{table}[h]
     \centering
-    \caption{Success rate of Binary Rewrites with ddisasm}
+    \caption{This table outlines the success rates for the ddisasm binary rewriter, 
+    following the same format as the previous tables. Note that the ddisasm rewriter was not able to handle the mysql subject,
+    meaning that it was not able to produce a valid binary, hence the 'N/A' entries.
+    A suspected reason for this is the size of the mysql binary, which is significantly larger than the other subjects.}
     \begin{tabular}{|l|l|l|l|}
     \hline
     Subject & Total & Passed & Success rate \\ \hline
@@ -544,7 +558,7 @@ it closer to a comprehensive solution for binary rewriter testing and eval
     
     \begin{table}[h]
     \centering
-    \caption{Direct comparison of success rates of Binary Rewrites with all 3 studied rewriters}
+    \caption{This table provides a direct comparison of the success rates for each of the three binary rewriters across all the subjects.}
     \begin{tabular}{|l|l|l|l|}
     \hline
     subject & zipr & e9patch & ddisasm \\ \hline
@@ -556,6 +570,16 @@ it closer to a comprehensive solution for binary rewriter testing and eval
     \end{tabular}
     \end{table}
 
+    From these results, it is evident that each binary rewriter performed well in certain areas, 
+    but also faced limitations. For example, Zipr and e9patch were successful in rewriting the coreutils, 
+    mysql, and sqlite subjects, whereas ddisasm did not support the mysql subject. Interestingly, e9patch
+    was the only rewriter to successfully handle the libreoffice subject.
+    We also observed that the ddisasm rewriter was the only one to fail to rewrite the mysql subject,
+    showing that is is not able to handle large binaries.
+    These results demonstrate the 
+    unique capabilities and constraints of each binary rewriter and emphasize the need for comprehensive 
+    evaluation frameworks like RBMT.
+
 %%%%%%%%%%%%%%%%%%%%
 \chapter{Conclusion}
 %%%%%%%%%%%%%%%%%%%%
@@ -563,6 +587,13 @@ it closer to a comprehensive solution for binary rewriter testing and eval
 In summary, this report has introduced RBMT, a framework designed explicitly for testing binary rewriters. 
 As a comprehensive platform, RBMT aims at permitting large-scale assessments of binary rewriters, while also accommodating a 
 diversity of subjects within a controlled environment.
+
+Our analysis of the three binary rewriters—Zipr, e9patch, and ddisasm—revealed varied performances across different subjects.
+Zipr and e9patch demonstrated excellent performances in the coreutils, mysql, and sqlite subjects with a success rate of 100\%.
+However, Zipr failed to rewrite the libreoffice subject, while e9patch succeeded. On the other hand, ddisasm matched the performance 
+of Zipr in coreutils and redis and that of e9patch in sqlite but did not support the mysql subject and failed to rewrite the libreoffice subject. 
+These findings illuminate the strengths and weaknesses of the studied rewriters, emphasizing the necessity of RBMT for in-depth 
+binary rewriter evaluation.
 
 However, it is essential to note the limitations of RBMT. As it stands, RBMT can only evaluate binary rewriters on 
 Linux binaries and supports a restricted range of subjects. Consequently, we anticipate future research 
