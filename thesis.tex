@@ -17,6 +17,10 @@
 \usepackage{float}
 \usepackage{tikz}
 \usepackage{placeins}
+\usepackage{hyperref}
+\usepackage{url}
+\Urlmuskip=0mu plus 1mu\relax
+\Urlbreaks=\do\/\do-{} 
 
 \title{A Binary Rewriter Benchmarking Tool}
 \author{Khalil M'hirsi}
@@ -336,9 +340,8 @@ evaluation repository as a foundation. We allocated three weeks to this endeavor
 benefit from the existing infrastructure as stated in GrammaTech's declaration:
 
 "All artifacts generated in this work, including our evaluation infrastructure, corpus
-of test binaries, predictive models, and the evaluated tools, are publicly available at: \\
-\\
-\hyperref[https://gitlab.com/GrammaTech/lifter-eval]{https://gitlab.com/GrammaTech/lifter-eval} (GrammaTech, n.d.)."
+of test binaries, predictive models, and the evaluated tools, are publicly available at: 
+\href{https://gitlab.com/GrammaTech/lifter-eval}{https://gitlab.com/GrammaTech/lifter-eval} (GrammaTech, n.d.)."
 
 Our strategy was to meticulously adhere to the available documentation for
 constructing each docker image using the provided Dockerfiles. Unfortunately, this
