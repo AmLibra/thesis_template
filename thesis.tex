@@ -331,15 +331,15 @@ meets these stringent requirements.
 %%%%%%%%%%%%%%%%%%%%%%%%
 
 \setlength{\parindent}{4em}
-\textbf{Grammatech’s testsuite}
+\textbf{Grammatech’s Test Suite}
 
 The initial phase of our project design involved leveraging GrammaTech's lifter
 evaluation repository as a foundation. We allocated three weeks to this endeavor, hoping to
 benefit from the existing infrastructure as stated in GrammaTech's declaration:
 
 "All artifacts generated in this work, including our evaluation infrastructure, corpus
-of test binaries, predictive models, and the evaluated tools, are publicly available at:\\
-https://gitlab.com/GrammaTech/lifter-eval (GrammaTech, n.d.)."
+of test binaries, predictive models, and the evaluated tools, are publicly available at:
+\hyperref[https://gitlab.com/GrammaTech/lifter-eval]{https://gitlab.com/GrammaTech/lifter-eval} (GrammaTech, n.d.)."
 
 Our strategy was to meticulously adhere to the available documentation for
 constructing each docker image using the provided Dockerfiles. Unfortunately, this
@@ -357,42 +357,38 @@ actively improving their repository, implementing new features and adding more b
 the test suite, including new languages like Fortran and Ocaml.
 
 This initial setback underscored the importance of adaptability in our design
-strategy, leading us to pivot towards developing our own infrastructure for the project. We
-will nevertheless mention that having been able to build a few important docker images
-using Grammatech’s repository, we saved time in not needing to build the tools required to
-rewrite binaries. The tools that were salvaged in this manner were Zipr, e9patch, and
-GrammaTech’s own rewriter ddisasm.
+strategy, leading us to pivot towards developing our own infrastructure for the project. The ability to build a few important docker images
+using Grammatech’s repository saved time as it eliminated the need to build the required tools for
+rewriting binaries. The tools salvaged in this manner were Zipr, e9patch, and
+GrammaTech’s own rewriter, ddisasm.
 
-\textbf{Building our custom pipeline}
+\textbf{Building a Custom Pipeline}
 
 With the complexities associated with this expansive project and the potential
-challenges of constructing a robust and comprehensive test suite, we had to adjust our
-strategy when constructing our own pipeline. Given that I was the sole architect of this
-project, it was critical to ensure the feasibility of each development stage.
+challenges of constructing a robust and comprehensive test suite, an adjustment in
+strategy was necessary when constructing our own pipeline. It was critical to ensure the feasibility of each development stage.
 
-Our approach mirrored the principles of Rapid or Agile development, whereby we
-established tangible, weekly goals to ensure continuous progression. The primary objective
-was to accelerate the delivery of a Minimum Viable Product (MVP) and subsequently
+The approach mirrored principles of iterative development, whereby tangible, weekly goals were
+established to ensure continuous progression. The primary objective
+was to accelerate the delivery of a proof of concept and subsequently
 enhance its functionality by incorporating as many desired features as possible over time.
 This strategic planning not only ensured the project's success rate but also addressed the
-earlier-mentioned challenges of scalability and modularity.
+challenges of scalability and modularity.
 
-In terms of the operating system, we decided to restrict the test suite to Linux for
+In terms of the operating system, the test suite was restricted to Linux for
 the initial development phase. This decision was driven by the ease of scripting on Linux and
 the convenience of automating and instrumenting installations of the test subjects from
-source. While our code and scripts needed to maintain simplicity, even if it occasionally
+source. While the code and scripts needed to maintain simplicity, even if it occasionally
 required 'hacky' solutions, this was necessary to ensure the pipeline's internals remained
-understandable and easily modifiable. This is a major difference from Grammatech’s over-
-engineered tool pipeline.
+understandable and easily modifiable. This stands in contrast to Grammatech’s more complex tool pipeline.
 
 Communication within our pipeline was primarily facilitated through file exchanges
 on the Linux file system, leveraging another strength of the UNIX-based OS. By focusing on
-simplicity and agility in our design strategy, we aimed to build a pipeline that was, above all
-else, both efficient and adaptable to future enhancements.
+simplicity in the design strategy, the aim was to build a pipeline that was efficient and adaptable to future enhancements.
 
 \textbf{Tool Architecture and initiating the Testing Pipeline}
 
-Our new benchmarking tool, imaginatively dubbed the Rewriter Benchmarking Tool
+Our new benchmarking tool, imaginatively dubbed the Rewriter BenchMarking Tool
 (RBMT), was designed to utilize comprehensive and trusted test suites from popular
 software. The RBMT was conceived with the primary objective of comparing the
 performance of binaries, pre- and post-rewrite, using various binary rewriters derived from
@@ -489,12 +485,17 @@ it closer to a comprehensive solution for binary rewriter testing and eval
 \chapter{Results}
 %%%%%%%%%%%%%%%%%%%%
 
-The experiments conducted as part of this research were run on an Intel Core i7-9700K CPU @ 3.60GHz with 16GB of RAM, 
-running Ubuntu 20.04 LTS. Each of the three binary rewriters (Zipr, e9patch, and ddisasm) were tested on five different 
-subjects: coreutils, libreoffice, mysql, redis, and sqlite. The success rate of the binary rewrites was calculated
-based on the number of total tests run and the number of those tests that passed.
+The experiments conducted as part of this research were run on a remote Linux server with an 
+AMD EPYC 7302P 16-Core Processor and 62GB of RAM, running Ubuntu 18.04.6 LTS. Each of the three
+binary rewriters were run in their own Docker containers: Zipr was run in a Docker container 
+with Ubuntu 22.04.2 LTS, e9patch was run in a Docker container with Ubuntu 20.04.6 LTS, and 
+ddisasm was run in a Docker container also with Ubuntu 20.04.6 LTS.
 
-\begin{table}[h]
+Each of the three binary rewriters (Zipr, e9patch, and ddisasm) were tested on five different 
+subjects: coreutils, libreoffice, mysql, redis, and sqlite. The success rate of the binary 
+rewrites was calculated based on the number of total tests run and the number of those tests that passed.
+
+    \begin{table}[h]
     \centering
     \caption{This table showcases the total number of tests run for each subject, 
     the number of tests passed, and the resulting success rate for the Zipr binary rewriter. 
